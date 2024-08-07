@@ -16,25 +16,25 @@ header {
     align-items: center;
 }
 
-header .logo {
-    font-size: 1.5em;
-}
+    header .logo {
+        font-size: 1.5em;
+    }
 
-header nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-}
+    header nav ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+    }
 
-header nav ul li {
-    margin-left: 20px;
-}
+        header nav ul li {
+            margin-left: 20px;
+        }
 
-header nav ul li a {
-    color: white;
-    text-decoration: none;
-}
+            header nav ul li a {
+                color: white;
+                text-decoration: none;
+            }
 
 main {
     padding: 20px;
@@ -66,13 +66,13 @@ footer {
     margin-bottom: 20px;
 }
 
-.card h3 {
-    margin-top: 0;
-}
+    .card h3 {
+        margin-top: 0;
+    }
 
-.card p {
-    margin: 5px 0;
-}
+    .card p {
+        margin: 5px 0;
+    }
 
 /* Arama Çubuğu */
 .search-bar {
@@ -81,20 +81,20 @@ footer {
     margin-bottom: 20px;
 }
 
-.search-bar input {
-    padding: 10px;
-    font-size: 1em;
-    width: 300px;
-}
+    .search-bar input {
+        padding: 10px;
+        font-size: 1em;
+        width: 300px;
+    }
 
-.search-bar button {
-    padding: 10px;
-    font-size: 1em;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
+    .search-bar button {
+        padding: 10px;
+        font-size: 1em;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
 
 /* Ürün, Kategori ve Kampanya Listeleri */
 .product-list, .category-list, .promotion-list {
@@ -102,3 +102,62 @@ footer {
     flex-wrap: wrap;
     gap: 20px;
 }
+
+/* Ürün Detayları */
+.product-detail img {
+    max-width: 300px;
+    border-radius: 5px;
+}
+
+.product-info {
+    display: flex;
+    gap: 20px;
+}
+
+    .product-info .product-details {
+        flex: 1;
+    }
+
+/* Sepet Sayfası */
+.cart-items {
+    margin-bottom: 20px;
+}
+
+.cart-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.checkout form {
+    display: flex;
+    flex-direction: column;
+}
+
+.checkout label {
+    margin-top: 10px;
+}
+
+.checkout input, .checkout select {
+    padding: 10px;
+    margin-top: 5px;
+}
+
+/* Yorumlar */
+.reviews .review-list {
+    margin-top: 20px;
+}
+
+/* Genel Buton Stilleri */
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
+
+    button:hover {
+        background-color: #45a049;
+    }

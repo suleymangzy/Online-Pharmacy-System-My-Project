@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ödeme</title>
+    <link rel="stylesheet" href="common.css">
+</head>
+<body>
+    <header>
+        <div class="logo">Eczane</div>
+        <nav>
+            <ul>
+                <li><a href="/">Anasayfa</a></li>
+                <li><a href="/Categories">Kategoriler</a></li>
+                <li><a href="/Cart">Sepet</a></li>
+                <li><a href="/Account">Hesabım</a></li>
+                <li><a href="/Checkout">Ödeme</a></li>
+                <li><a href="/Product">Ürünler</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="checkout">
+            <h2>Ödeme</h2>
+            <form>
+                <label for="address">Teslimat Adresi:</label>
+                <input type="text" id="address" name="address" required>
+
+                <label for="payment-method">Ödeme Yöntemi:</label>
+                <select id="payment-method" name="payment-method" required>
+                    <option value="credit-card">Kredi Kartı</option>
+                    <option value="bank-transfer">Banka Havalesi</option>
+                </select>
+
+                <div class="order-summary">
+                    <p><strong>Toplam Tutar:</strong> 100 TL</p>
+                    <button type="submit" class="pay-now">Ödeme Yap</button>
+                </div>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Eczane. Tüm hakları saklıdır.</p>
+    </footer>
+    <script src="common.js"></script>
+</body>
+</html>

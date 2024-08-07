@@ -132,3 +132,4 @@ C:\Users\cizgi\Documents\PROJE\OnlinePharmacySystem\OnlinePharmacySystem.Web\obj
 C:\Users\cizgi\Documents\PROJE\OnlinePharmacySystem\OnlinePharmacySystem.Web\obj\Debug\net8.0\OnlinePharmacySystem.Web.pdb
 C:\Users\cizgi\Documents\PROJE\OnlinePharmacySystem\OnlinePharmacySystem.Web\obj\Debug\net8.0\OnlinePharmacySystem.Web.genruntimeconfig.cache
 C:\Users\cizgi\Documents\PROJE\OnlinePharmacySystem\OnlinePharmacySystem.Web\obj\Debug\net8.0\ref\OnlinePharmacySystem.Web.dll
+C:\Users\cizgi\Documents\PROJE\OnlinePharmacySystem\OnlinePharmacySystem.Web\obj\Debug\net8.0\OnlinePharmacySystem.Web.sourcelink.json
