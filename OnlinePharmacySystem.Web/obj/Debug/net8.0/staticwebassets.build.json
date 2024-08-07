@@ -1,0 +1,58 @@
+{
+  "Version": 1,
+  "Hash": "sauD04hwCTpVJdGX6f377cAMzb2EUUVhAoM06JkfeVc=",
+  "Source": "OnlinePharmacySystem.Web",
+  "BasePath": "_content/OnlinePharmacySystem.Web",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "OnlinePharmacySystem.Web\\wwwroot",
+      "Source": "OnlinePharmacySystem.Web",
+      "ContentRoot": "C:\\Users\\cizgi\\Documents\\PROJE\\OnlinePharmacySystem\\OnlinePharmacySystem.Web\\wwwroot\\",
+      "BasePath": "_content/OnlinePharmacySystem.Web",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\cizgi\\Documents\\PROJE\\OnlinePharmacySystem\\OnlinePharmacySystem.Web\\wwwroot\\common.css",
+      "SourceId": "OnlinePharmacySystem.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\cizgi\\Documents\\PROJE\\OnlinePharmacySystem\\OnlinePharmacySystem.Web\\wwwroot\\",
+      "BasePath": "_content/OnlinePharmacySystem.Web",
+      "RelativePath": "common.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\common.css"
+    },
+    {
+      "Identity": "C:\\Users\\cizgi\\Documents\\PROJE\\OnlinePharmacySystem\\OnlinePharmacySystem.Web\\wwwroot\\common.js",
+      "SourceId": "OnlinePharmacySystem.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\cizgi\\Documents\\PROJE\\OnlinePharmacySystem\\OnlinePharmacySystem.Web\\wwwroot\\",
+      "BasePath": "_content/OnlinePharmacySystem.Web",
+      "RelativePath": "common.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\common.js"
+    }
+  ]
+}

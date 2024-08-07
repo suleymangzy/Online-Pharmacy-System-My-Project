@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\OnlinePharmacySystem.Web.props" />
+</Project>

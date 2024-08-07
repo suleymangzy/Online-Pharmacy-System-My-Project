@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anasayfa</title>
+    <link rel="stylesheet" href="common.css">
+</head>
+<body>
+    <header>
+        <div class="logo">Eczane</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Anasayfa</a></li>
+                <li><a href="categories.html">Kategoriler</a></li>
+                <li><a href="cart.html">Sepet</a></li>
+                <li><a href="account.html">Hesabım</a></li>
+                <li><a href="contact.html">İletişim</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="search-bar">
+            <input type="text" placeholder="Ürün arayın...">
+            <button type="button">Ara</button>
+        </section>
+        <section class="popular-products">
+            <h2>Popüler Ürünler</h2>
+            <div class="product-list">
+                <!-- Ürün kartları burada olacak -->
+            </div>
+        </section>
+        <section class="categories">
+            <h2>Kategoriler</h2>
+            <div class="category-list">
+                <!-- Kategori kartları burada olacak -->
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Eczane. Tüm hakları saklıdır.</p>
+    </footer>
+    <script src="common.js"></script>
+    <script>
+        // Anasayfa'ya özel JavaScript kodları
+        document.addEventListener('DOMContentLoaded', () => {
+            const popularProducts = [
+                { name: 'Aspirin', description: 'Ağrı kesici', price: '10 TL' },
+                { name: 'Parol', description: 'Ateş düşürücü', price: '8 TL' },
+                { name: 'Nurofen', description: 'Ağrı kesici', price: '12 TL' },
+            ];
+
+            const categories = [
+                'Ağrı Kesici', 'Ateş Düşürücü', 'Vitaminler', 'Cilt Bakımı'
+            ];
+
+            const productContainer = document.querySelector('.product-list');
+            popularProducts.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.classList.add('card');
+                productCard.innerHTML = `
+                    <h3>${product.name}</h3>
+                    <p>${product.description}</p>
+                    <p>${product.price}</p>
+                `;
+                productContainer.appendChild(productCard);
+            });
+
+            const categoryContainer = document.querySelector('.category-list');
+            categories.forEach(category => {
+                const categoryCard = document.createElement('div');
+                categoryCard.classList.add('card');
+                categoryCard.innerHTML = `<h3>${category}</h3>`;
+                categoryContainer.appendChild(categoryCard);
+            });
+        });
+    </script>
+</body>
+</html>
