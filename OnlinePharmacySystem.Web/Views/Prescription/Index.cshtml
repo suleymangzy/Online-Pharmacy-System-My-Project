@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reçete</title>
+    <link rel="stylesheet" href="css/common.css">
+</head>
+<body>
+    <header>
+        <div class="logo">Eczane</div>
+        <nav>
+            <ul>
+                <li><a href="/">Anasayfa</a></li>
+                <li><a href="/Products">Ürünler</a></li>
+                <li><a href="/Pharmacies">Eczaneler</a></li>
+                <li><a href="/Prescription">Reçete Sorgula</a></li>
+                <li><a href="/Basket">Sepetim</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="prescription">
+            <h2>Reçete</h2>
+            <form id="prescription-form">
+                <label for="prescription-text">Reçeteyi Buraya Girin:</label>
+                <textarea id="prescription-text" name="prescription-text" rows="10" required></textarea>
+                <button type="submit">Reçeteyi Gönder</button>
+            </form>
+            <div id="prescription-results" class="prescription-results">
+                <!-- Reçete sonuçları burada olacak -->
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Eczane. Tüm hakları saklıdır.</p>
+    </footer>
+    <script src="js/common.js"></script>
+    <script>
+        document.getElementById('prescription-form').addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            // Burada reçete metnini alıp, uygun ilaçları göstermek için bir işlem yapılabilir.
+            const prescriptionText = document.getElementById('prescription-text').value;
+
+            // Örnek bir reçete işleme (bu kısmı backend ile entegre edebilirsiniz)
+            const sampleMedicines = [
+                { name: 'Aspirin', description: 'Ağrı kesici', price: '10 TL' },
+                { name: 'Parol', description: 'Ateş düşürücü', price: '8 TL' }
+            ];
+
+            const resultsContainer = document.getElementById('prescription-results');
+            resultsContainer.innerHTML = '<h3>Reçetede Bulunan İlaçlar</h3>';
+
+            sampleMedicines.forEach(medicine => {
+                const medicineCard = document.createElement('div');
+                medicineCard.classList.add('card');
+                medicineCard.innerHTML = `
+                            <h3>${medicine.name}</h3>
+                            <p>${medicine.description}</p>
+                            <p>${medicine.price}</p>
+                            <button type="button">Sepete Ekle</button>
+                        `;
+                resultsContainer.appendChild(medicineCard);
+            });
+        });
+    </script>
+</body>
+</html>
+
+

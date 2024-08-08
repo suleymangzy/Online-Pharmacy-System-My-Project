@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eczaneler</title>
+    <link rel="stylesheet" href="css/common.css">
+</head>
+<body>
+    <header>
+        <div class="logo">Eczane</div>
+        <nav>
+            <ul>
+                <li><a href="/">Anasayfa</a></li>
+                <li><a href="/Products">Ürünler</a></li>
+                <li><a href="/Pharmacies">Eczaneler</a></li>
+                <li><a href="/Prescription">Reçete Sorgula</a></li>
+                <li><a href="/Basket">Sepetim</a></li>
+            </ul>
+        </nav>
+        </nav>
+    </header>
+    <main>
+        <section class="pharmacies">
+            <h2>Eczaneler</h2>
+            <div class="pharmacy-list">
+                <!-- Eczane kartları burada olacak -->
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Eczane. Tüm hakları saklıdır.</p>
+    </footer>
+    <script src="js/common.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const pharmacies = [
+                { name: 'Eczane A', address: 'Adres 1, Şehir', contact: '123-456-7890' },
+                { name: 'Eczane B', address: 'Adres 2, Şehir', contact: '987-654-3210' },
+                { name: 'Eczane C', address: 'Adres 3, Şehir', contact: '456-789-1234' }
+            ];
+
+            const pharmacyContainer = document.querySelector('.pharmacy-list');
+            pharmacies.forEach(pharmacy => {
+                const pharmacyCard = document.createElement('div');
+                pharmacyCard.classList.add('card');
+                pharmacyCard.innerHTML = `
+                            <h3>${pharmacy.name}</h3>
+                            <p>${pharmacy.address}</p>
+                            <p>İletişim: ${pharmacy.contact}</p>
+                            <button type="button">Detaylar</button>
+                        `;
+                pharmacyContainer.appendChild(pharmacyCard);
+            });
+        });
+    </script>
+</body>
+</html>
+

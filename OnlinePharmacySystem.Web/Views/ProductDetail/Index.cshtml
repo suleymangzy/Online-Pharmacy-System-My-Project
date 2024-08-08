@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ürün Detayı</title>
+    <link rel="stylesheet" href="css/common.css">
+</head>
+<body>
+    <header>
+        <div class="logo">Eczane</div>
+        <nav>
+            <ul>
+                <li><a href="/">Anasayfa</a></li>
+                <li><a href="/Products">Ürünler</a></li>
+                <li><a href="/Pharmacies">Eczaneler</a></li>
+                <li><a href="/Prescription">Reçete Sorgula</a></li>
+                <li><a href="/Basket">Sepetim</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="product-detail">
+            <h2>Ürün Detayı</h2>
+            <div id="product-info">
+                <!-- Ürün bilgileri burada gösterilecek -->
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Eczane. Tüm hakları saklıdır.</p>
+    </footer>
+    <script src="js/common.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const productId = params.get('productId');
+
+            // Ürün detaylarını buraya dinamik olarak ekleyin
+            const productInfo = document.getElementById('product-info');
+            // Ürün bilgilerini bu aşamada API çağrısı veya bir veri yapısından alabilirsiniz
+            if (productId) {
+                // Örnek ürün bilgileri
+                const productDetails = {
+                    1: { name: 'Aspirin', description: 'Ağrı kesici', price: '10 TL' },
+                    2: { name: 'Parol', description: 'Ateş düşürücü', price: '8 TL' },
+                    3: { name: 'Nurofen', description: 'Ağrı kesici', price: '12 TL' },
+                };
+
+                const product = productDetails[productId];
+                if (product) {
+                    productInfo.innerHTML = `
+                                <h3>${product.name}</h3>
+                                <p>${product.description}</p>
+                                <p><strong>Fiyat:</strong> ${product.price}</p>
+                                <button>Sepete Ekle</button>
+                            `;
+                } else {
+                    productInfo.innerHTML = '<p>Ürün bulunamadı.</p>';
+                }
+            } else {
+                productInfo.innerHTML = '<p>Geçersiz ürün ID.</p>';
+            }
+        });
+    </script>
+</body>
+</html>
+

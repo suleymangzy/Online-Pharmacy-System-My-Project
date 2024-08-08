@@ -1,12 +1,12 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\cizgi\\Documents\\PROJE\\OnlinePharmacySystem\\OnlinePharmacySystem.Web\\wwwroot\\common.css",
-      "PackagePath": "staticwebassets\\common.css"
+      "Id": "C:\\Users\\cizgi\\Documents\\PROJE\\OnlinePharmacySystem\\OnlinePharmacySystem.Web\\wwwroot\\css\\common.css",
+      "PackagePath": "staticwebassets\\css\\common.css"
     },
     {
-      "Id": "C:\\Users\\cizgi\\Documents\\PROJE\\OnlinePharmacySystem\\OnlinePharmacySystem.Web\\wwwroot\\common.js",
-      "PackagePath": "staticwebassets\\common.js"
+      "Id": "C:\\Users\\cizgi\\Documents\\PROJE\\OnlinePharmacySystem\\OnlinePharmacySystem.Web\\wwwroot\\js\\common.js",
+      "PackagePath": "staticwebassets\\js\\common.js"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.OnlinePharmacySystem.Web.Microsoft.AspNetCore.StaticWebAssets.props",

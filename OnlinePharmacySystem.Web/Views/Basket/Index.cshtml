@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sepet</title>
+    <link rel="stylesheet" href="css/common.css">
+</head>
+<body>
+    <header>
+        <div class="logo">Eczane</div>
+        <nav>
+            <ul>
+                <li><a href="/">Anasayfa</a></li>
+                <li><a href="/Products">Ürünler</a></li>
+                <li><a href="/Pharmacies">Eczaneler</a></li>
+                <li><a href="/Prescription">Reçete Sorgula</a></li>
+                <li><a href="/Basket">Sepetim</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="cart">
+            <h2>Sepetiniz</h2>
+            <div class="cart-items">
+                <!-- Sepet ürünleri burada olacak -->
+            </div>
+            <div class="cart-total">
+                <p>Toplam: <span id="total-price">0 TL</span></p>
+                <button type="button">Ödeme Yap</button>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Eczane. Tüm hakları saklıdır.</p>
+    </footer>
+    <script src="js/common.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const cartItems = [
+                { name: 'Aspirin', quantity: 2, price: '10 TL' },
+                { name: 'Parol', quantity: 1, price: '8 TL' }
+            ];
+
+            const cartContainer = document.querySelector('.cart-items');
+            let totalPrice = 0;
+
+            cartItems.forEach(item => {
+                const itemRow = document.createElement('div');
+                itemRow.classList.add('cart-item');
+                const itemTotalPrice = parseInt(item.price.replace(' TL', '')) * item.quantity;
+                totalPrice += itemTotalPrice;
+                itemRow.innerHTML = `
+                            <p>${item.name} - ${item.quantity} x ${item.price}</p>
+                            <p>${itemTotalPrice} TL</p>
+                        `;
+                cartContainer.appendChild(itemRow);
+            });
+
+            document.getElementById('total-price').textContent = `${totalPrice} TL`;
+        });
+    </script>
+</body>
+</html>
+

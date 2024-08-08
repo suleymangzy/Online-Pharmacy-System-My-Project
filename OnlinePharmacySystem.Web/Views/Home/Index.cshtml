@@ -4,30 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anasayfa</title>
-    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="css/common.css">
 </head>
 <body>
     <header>
         <div class="logo">Eczane</div>
         <nav>
             <ul>
-                <li><a href="index.html">Anasayfa</a></li>
-                <li><a href="categories.html">Kategoriler</a></li>
-                <li><a href="cart.html">Sepet</a></li>
-                <li><a href="account.html">Hesabım</a></li>
-                <li><a href="contact.html">İletişim</a></li>
+                <li><a href="/">Anasayfa</a></li>
+                <li><a href="/Products">Ürünler</a></li>
+                <li><a href="/Pharmacies">Eczaneler</a></li>
+                <li><a href="/Prescription">Reçete Sorgula</a></li>
+                <li><a href="/Basket">Sepetim</a></li>
             </ul>
         </nav>
     </header>
     <main>
-        <section class="search-bar">
-            <input type="text" placeholder="Ürün arayın...">
-            <button type="button">Ara</button>
-        </section>
         <section class="popular-products">
             <h2>Popüler Ürünler</h2>
             <div class="product-list">
-                <!-- Ürün kartları burada olacak -->
+                <div class="card">
+                    <h3>Aspirin</h3>
+                    <p>Ağrı kesici</p>
+                    <p>10 TL</p>
+                    <a href="/ProductDetail" class="button">Satın Al</a>
+                </div>
+                <div class="card">
+                    <h3>Parol</h3>
+                    <p>Ateş düşürücü</p>
+                    <p>8 TL</p>
+                    <a href="/ProductDetail" class="button">Satın Al</a>
+                </div>
+                <div class="card">
+                    <h3>Nurofen</h3>
+                    <p>Ağrı kesici</p>
+                    <p>12 TL</p>
+                    <a href="/ProductDetail" class="button">Satın Al</a>
+                </div>
             </div>
         </section>
         <section class="categories">
@@ -36,44 +49,16 @@
                 <!-- Kategori kartları burada olacak -->
             </div>
         </section>
+        <section class="contact-info">
+            <h2>İletişim</h2>
+            <p><strong>Adres:</strong> Örnek Cad. No:123, İstanbul</p>
+            <p><strong>Telefon:</strong> +90 123 456 78 90</p>
+            <p><strong>E-posta:</strong> info@eczane.com</p>
+        </section>
     </main>
     <footer>
         <p>&copy; 2024 Eczane. Tüm hakları saklıdır.</p>
     </footer>
-    <script src="common.js"></script>
-    <script>
-        // Anasayfa'ya özel JavaScript kodları
-        document.addEventListener('DOMContentLoaded', () => {
-            const popularProducts = [
-                { name: 'Aspirin', description: 'Ağrı kesici', price: '10 TL' },
-                { name: 'Parol', description: 'Ateş düşürücü', price: '8 TL' },
-                { name: 'Nurofen', description: 'Ağrı kesici', price: '12 TL' },
-            ];
-
-            const categories = [
-                'Ağrı Kesici', 'Ateş Düşürücü', 'Vitaminler', 'Cilt Bakımı'
-            ];
-
-            const productContainer = document.querySelector('.product-list');
-            popularProducts.forEach(product => {
-                const productCard = document.createElement('div');
-                productCard.classList.add('card');
-                productCard.innerHTML = `
-                    <h3>${product.name}</h3>
-                    <p>${product.description}</p>
-                    <p>${product.price}</p>
-                `;
-                productContainer.appendChild(productCard);
-            });
-
-            const categoryContainer = document.querySelector('.category-list');
-            categories.forEach(category => {
-                const categoryCard = document.createElement('div');
-                categoryCard.classList.add('card');
-                categoryCard.innerHTML = `<h3>${category}</h3>`;
-                categoryContainer.appendChild(categoryCard);
-            });
-        });
-    </script>
+    <script src="js/common.js"></script>
 </body>
 </html>

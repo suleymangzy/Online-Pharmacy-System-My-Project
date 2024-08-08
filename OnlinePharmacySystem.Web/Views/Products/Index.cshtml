@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ürünler</title>
+    <link rel="stylesheet" href="css/common.css">
+</head>
+<body>
+    <header>
+        <div class="logo">Eczane</div>
+        <nav>
+            <ul>
+                <li><a href="/">Anasayfa</a></li>
+                <li><a href="/Products">Ürünler</a></li>
+                <li><a href="/Pharmacies">Eczaneler</a></li>
+                <li><a href="/Prescription">Reçete Sorgula</a></li>
+                <li><a href="/Basket">Sepetim</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="products">
+            <h2>Ürünler</h2>
+            <div class="product-list">
+                <!-- Ürün kartları burada olacak -->
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Eczane. Tüm hakları saklıdır.</p>
+    </footer>
+    <script src="js/common.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const products = [
+                { name: 'Aspirin', description: 'Ağrı kesici', price: '10 TL', imageUrl: 'images/aspirin.jpg' },
+                { name: 'Parol', description: 'Ateş düşürücü', price: '8 TL', imageUrl: 'images/parol.jpg' },
+                { name: 'Nurofen', description: 'Ağrı kesici', price: '12 TL', imageUrl: 'images/nurofen.jpg' }
+            ];
+
+            const productContainer = document.querySelector('.product-list');
+            products.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.classList.add('card');
+                productCard.innerHTML = `
+                            <img src="${product.imageUrl}" alt="${product.name}">
+                            <h3>${product.name}</h3>
+                            <p>${product.description}</p>
+                            <p>${product.price}</p>
+                            <button type="button">Sepete Ekle</button>
+                        `;
+                productContainer.appendChild(productCard);
+            });
+        });
+    </script>
+</body>
+</html>
+
