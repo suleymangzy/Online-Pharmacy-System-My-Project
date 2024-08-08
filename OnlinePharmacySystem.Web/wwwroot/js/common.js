@@ -1,31 +1,37 @@
 ﻿document.addEventListener('DOMContentLoaded', () => {
-    // Ortak JavaScript işlevsellikleri burada tanımlanabilir
-    console.log('Ortak JavaScript dosyası yüklendi.');
+    // Popüler ürünler ve kategoriler için veri örnekleri
+    const popularProducts = [
+        { name: 'Aspirin', description: 'Ağrı kesici', price: '10 TL' },
+        { name: 'Parol', description: 'Ateş düşürücü', price: '8 TL' },
+        { name: 'Nurofen', description: 'Ağrı kesici', price: '12 TL' },
+    ];
 
-    // Örnek bir işlev: sayfanın en üstüne dönme düğmesi
-    const scrollToTopButton = document.createElement('button');
-    scrollToTopButton.textContent = 'Yukarı Dön';
-    scrollToTopButton.style.position = 'fixed';
-    scrollToTopButton.style.bottom = '20px';
-    scrollToTopButton.style.right = '20px';
-    scrollToTopButton.style.padding = '10px';
-    scrollToTopButton.style.backgroundColor = '#4CAF50';
-    scrollToTopButton.style.color = 'white';
-    scrollToTopButton.style.border = 'none';
-    scrollToTopButton.style.cursor = 'pointer';
-    scrollToTopButton.style.display = 'none';
+    const categories = [
+        'Ağrı Kesici', 'Ateş Düşürücü', 'Vitaminler', 'Cilt Bakımı'
+    ];
 
-    document.body.appendChild(scrollToTopButton);
+    // Anasayfa için ürün ve kategori kartları oluşturma
+    if (document.querySelector('.product-list')) {
+        const productContainer = document.querySelector('.product-list');
+        popularProducts.forEach(product => {
+            const productCard = document.createElement('div');
+            productCard.classList.add('card');
+            productCard.innerHTML = `
+                <h3>${product.name}</h3>
+                <p>${product.description}</p>
+                <p>${product.price}</p>
+            `;
+            productContainer.appendChild(productCard);
+        });
+    }
 
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 300) {
-            scrollToTopButton.style.display = 'block';
-        } else {
-            scrollToTopButton.style.display = 'none';
-        }
-    });
-
-    scrollToTopButton.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+    if (document.querySelector('.category-list')) {
+        const categoryContainer = document.querySelector('.category-list');
+        categories.forEach(category => {
+            const categoryCard = document.createElement('div');
+            categoryCard.classList.add('card');
+            categoryCard.innerHTML = `<h3>${category}</h3>`;
+            categoryContainer.appendChild(categoryCard);
+        });
+    }
 });

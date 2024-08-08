@@ -103,6 +103,7 @@ footer {
     gap: 20px;
 }
 
+<<<<<<< HEAD:OnlinePharmacySystem.Web/wwwroot/css/common.css
 /* İletişim Kısmı */
 .contact-info {
     background-color: white;
@@ -118,4 +119,63 @@ footer {
 
     .contact-info p {
         margin: 5px 0;
+=======
+/* Ürün Detayları */
+.product-detail img {
+    max-width: 300px;
+    border-radius: 5px;
+}
+
+.product-info {
+    display: flex;
+    gap: 20px;
+}
+
+    .product-info .product-details {
+        flex: 1;
+    }
+
+/* Sepet Sayfası */
+.cart-items {
+    margin-bottom: 20px;
+}
+
+.cart-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.checkout form {
+    display: flex;
+    flex-direction: column;
+}
+
+.checkout label {
+    margin-top: 10px;
+}
+
+.checkout input, .checkout select {
+    padding: 10px;
+    margin-top: 5px;
+}
+
+/* Yorumlar */
+.reviews .review-list {
+    margin-top: 20px;
+}
+
+/* Genel Buton Stilleri */
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
+
+    button:hover {
+        background-color: #45a049;
+>>>>>>> 30bd79be4a7bd3056f5142f5744640b31a27cf61:OnlinePharmacySystem.Web/wwwroot/common.css
     }
