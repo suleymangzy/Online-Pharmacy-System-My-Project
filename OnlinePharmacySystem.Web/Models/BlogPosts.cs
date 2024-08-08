@@ -4,7 +4,7 @@ namespace onlinePharmacySystem.Web.Models
 {
     public class BlogPosts
     {
-        public int PostID { get; set; }
+        public int BlogPostID { get; set; }
         public string PostTitle { get; set; }
         public string PostBody { get; set; }
         public string PostAuthorName { get; set; }

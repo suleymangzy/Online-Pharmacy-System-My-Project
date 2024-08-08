@@ -1,12 +1,24 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using onlinePharmacySystem.Web.Models;
+using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
 
-namespace OnlinePharmacySystem.Web.Controllers
+namespace onlinePharmacySystem.Web.Controllers
 {
     public class ProductsController : Controller
     {
-        public IActionResult Index()
+        private readonly AppDbContext _context;
+
+        public ProductsController(AppDbContext context)
         {
-            return View();
+            _context = context;
+        }
+
+        public async Task<IActionResult> Index()
+        {
+            var products = await _context.Products.ToListAsync();
+            return View(products);
         }
     }
 }
+

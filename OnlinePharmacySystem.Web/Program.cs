@@ -1,30 +1,19 @@
+using onlinePharmacySystem.Web.Models;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Hizmetleri ekle
-builder.Services.AddControllersWithViews(); // MVC hizmetlerini ekler
-builder.Services.AddRazorPages(); // Razor Pages hizmetlerini ekler
+// Veritabaný baðlantýsýný yapýlandýrma
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// Kimlik doðrulama ve yetkilendirme hizmetlerini ekle
-builder.Services.AddAuthentication("YourCookieScheme")
-    .AddCookie("YourCookieScheme", options =>
-    {
-        options.LoginPath = "/Account/Login"; // Örnek
-    });
-
-builder.Services.AddAuthorization(options =>
-{
-    // Yetkilendirme politikalarýný tanýmlayýn
-    options.AddPolicy("AdminOnly", policy => policy.RequireRole("Admin"));
-});
+// Diðer servisleri ekleyin
+builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
-// Geliþtirme ortamýnda hata ayrýntýlarýný göster
-if (app.Environment.IsDevelopment())
-{
-    app.UseDeveloperExceptionPage();
-}
-else
+// Uygulamanýn orta katmanlarýný yapýlandýrýn
+if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
     app.UseHsts();
@@ -35,14 +24,10 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-// Kimlik doðrulama ve yetkilendirme iþlemlerini ekle
-app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
-
-app.MapRazorPages();
 
 app.Run();
