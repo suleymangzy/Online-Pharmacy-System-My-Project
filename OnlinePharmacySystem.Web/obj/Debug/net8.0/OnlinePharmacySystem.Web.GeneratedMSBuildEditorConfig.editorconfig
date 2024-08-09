@@ -18,26 +18,18 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\cizgi\Documents\PROJE\OnlinePharmacySystem\OnlinePharmacySystem.Web
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/cizgi/Documents/PROJE/OnlinePharmacySystem/OnlinePharmacySystem.Web/Views/Basket/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFza2V0XEluZGV4LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/cizgi/Documents/PROJE/OnlinePharmacySystem/OnlinePharmacySystem.Web/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/cizgi/Documents/PROJE/OnlinePharmacySystem/OnlinePharmacySystem.Web/Views/Pharmacies/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGhhcm1hY2llc1xJbmRleC5jc2h0bWw=
+[C:/Users/cizgi/Documents/PROJE/OnlinePharmacySystem/OnlinePharmacySystem.Web/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/cizgi/Documents/PROJE/OnlinePharmacySystem/OnlinePharmacySystem.Web/Views/Prescription/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJlc2NyaXB0aW9uXEluZGV4LmNzaHRtbA==
+[C:/Users/cizgi/Documents/PROJE/OnlinePharmacySystem/OnlinePharmacySystem.Web/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/cizgi/Documents/PROJE/OnlinePharmacySystem/OnlinePharmacySystem.Web/Views/ProductDetail/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdERldGFpbFxJbmRleC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/cizgi/Documents/PROJE/OnlinePharmacySystem/OnlinePharmacySystem.Web/Views/Products/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdHNcSW5kZXguY3NodG1s
+[C:/Users/cizgi/Documents/PROJE/OnlinePharmacySystem/OnlinePharmacySystem.Web/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
