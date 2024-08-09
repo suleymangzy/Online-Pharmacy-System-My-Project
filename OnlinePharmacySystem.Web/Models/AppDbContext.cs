@@ -27,63 +27,137 @@ namespace onlinePharmacySystem.Web.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // BlogPosts varlığı için birincil anahtar tanımlanır
+            // Define primary keys
             modelBuilder.Entity<BlogPosts>()
                 .HasKey(b => b.BlogPostID);
 
-            // Brands varlığı için birincil anahtar tanımlanır
             modelBuilder.Entity<Brands>()
                 .HasKey(b => b.BrandID);
 
-            // Categories varlığı için birincil anahtar tanımlanır
             modelBuilder.Entity<Categories>()
                 .HasKey(c => c.CategoryID);
 
-            // Deliveries varlığı için birincil anahtar tanımlanır
             modelBuilder.Entity<Deliveries>()
                 .HasKey(d => d.DeliveryID);
 
-            // FAQs varlığı için birincil anahtar tanımlanır
             modelBuilder.Entity<FAQs>()
                 .HasKey(f => f.FaqID);
 
-            // OrderDetails varlığı için birincil anahtar tanımlanır
             modelBuilder.Entity<OrderDetails>()
                 .HasKey(o => o.OrderDetailID);
 
-            // Orders varlığı için birincil anahtar tanımlanır
             modelBuilder.Entity<Orders>()
                 .HasKey(o => o.OrderID);
 
-            // Payments varlığı için birincil anahtar tanımlanır
             modelBuilder.Entity<Payments>()
                 .HasKey(p => p.PaymentID);
 
-            // Pharmacies varlığı için birincil anahtar tanımlanır
             modelBuilder.Entity<Pharmacies>()
                 .HasKey(p => p.PharmacyID);
 
-            // Prescriptions varlığı için birincil anahtar tanımlanır
             modelBuilder.Entity<Prescriptions>()
                 .HasKey(p => p.PrescriptionID);
 
-            // Products varlığı için birincil anahtar tanımlanır
             modelBuilder.Entity<Products>()
                 .HasKey(p => p.ProductID);
 
-            // Roles varlığı için birincil anahtar tanımlanır
             modelBuilder.Entity<Roles>()
                 .HasKey(r => r.RoleID);
 
-            // Suppliers varlığı için birincil anahtar tanımlanır
             modelBuilder.Entity<Suppliers>()
                 .HasKey(s => s.SupplierID);
 
-            // Users varlığı için birincil anahtar tanımlanır
             modelBuilder.Entity<Users>()
                 .HasKey(u => u.UserID);
 
-            // Decimal özellikler için precision ve scale tanımlamaları
+            // Define relationships with restricted cascade delete
+            modelBuilder.Entity<Users>()
+                .HasOne(u => u.UserRole)
+                .WithMany()
+                .HasForeignKey(u => u.UserRoleID)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Products>()
+                .HasOne(p => p.ProductCategory)
+                .WithMany()
+                .HasForeignKey(p => p.ProductCategoryID)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Products>()
+                .HasOne(p => p.ProductBrand)
+                .WithMany()
+                .HasForeignKey(p => p.ProductBrandID)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Products>()
+                .HasOne(p => p.ProductSupplier)
+                .WithMany()
+                .HasForeignKey(p => p.ProductSupplierID)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Products>()
+                .HasOne(p => p.ProductFAQs)
+                .WithMany()
+                .HasForeignKey(p => p.ProductFAQsID)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Products>()
+                .HasOne(p => p.ProductPharmacies)
+                .WithMany(p => p.PharmacyProducts)
+                .HasForeignKey(p => p.ProductPharmaciesID)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Prescriptions>()
+                .HasOne(p => p.PrescriptionUser)
+                .WithMany()
+                .HasForeignKey(p => p.PrescriptionUserID)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Orders>()
+                .HasOne(o => o.OrderUser)
+                .WithMany()
+                .HasForeignKey(o => o.OrderUserID)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Orders>()
+                .HasOne(o => o.OrderPayment)
+                .WithMany()
+                .HasForeignKey(o => o.OrderPaymentID)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Orders>()
+                .HasOne(o => o.OrderPharmacy)
+                .WithMany()
+                .HasForeignKey(o => o.OrderPharmacyID)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Orders>()
+                .HasOne(o => o.OrderDelivery)
+                .WithMany()
+                .HasForeignKey(o => o.OrderDeliveryID)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Basket>()
+                .HasOne(b => b.BasketUser)
+                .WithMany()
+                .HasForeignKey(b => b.BasketUserID)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            // Fix OrderDetails foreign keys to avoid cascade paths
+            modelBuilder.Entity<OrderDetails>()
+                .HasOne(od => od.OrderDetailOrder)
+                .WithMany()
+                .HasForeignKey(od => od.OrderID)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<OrderDetails>()
+                .HasOne(od => od.OrderDetailProduct)
+                .WithMany()
+                .HasForeignKey(od => od.ProductID)
+                .OnDelete(DeleteBehavior.Restrict);
+
+
+            // Decimal properties
             modelBuilder.Entity<OrderDetails>()
                 .Property(o => o.TaxRate)
                 .HasColumnType("decimal(18,2)");
@@ -96,8 +170,5 @@ namespace onlinePharmacySystem.Web.Models
                 .Property(p => p.ProductPrice)
                 .HasColumnType("decimal(18,2)");
         }
-
     }
 }
-
-

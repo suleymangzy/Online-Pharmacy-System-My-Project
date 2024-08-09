@@ -1,6 +1,4 @@
-﻿using Microsoft.VisualBasic;
-using System;
-using System.Data;
+﻿using System;
 
 namespace onlinePharmacySystem.Web.Models
 {
@@ -13,6 +11,7 @@ namespace onlinePharmacySystem.Web.Models
         public string UserEmail { get; set; }
         public string UserAddress { get; set; }
         public DateTime UserCreatedAt { get; set; }
+        public int UserRoleID { get; set; }  // Yabancı anahtar
         public Roles UserRole { get; set; }
     }
 }

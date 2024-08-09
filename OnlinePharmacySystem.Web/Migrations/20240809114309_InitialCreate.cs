@@ -155,101 +155,17 @@ namespace OnlinePharmacySystem.Web.Migrations
                     UserEmail = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UserAddress = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UserCreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UserRoleRoleID = table.Column<int>(type: "int", nullable: false)
+                    UserRoleID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Users", x => x.UserID);
                     table.ForeignKey(
-                        name: "FK_Users_Roles_UserRoleRoleID",
-                        column: x => x.UserRoleRoleID,
+                        name: "FK_Users_Roles_UserRoleID",
+                        column: x => x.UserRoleID,
                         principalTable: "Roles",
                         principalColumn: "RoleID",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Baskets",
-                columns: table => new
-                {
-                    BasketID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    BasketUserUserID = table.Column<int>(type: "int", nullable: false),
-                    BasketDate = table.Column<DateTime>(type: "datetime2", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Baskets", x => x.BasketID);
-                    table.ForeignKey(
-                        name: "FK_Baskets_Users_BasketUserUserID",
-                        column: x => x.BasketUserUserID,
-                        principalTable: "Users",
-                        principalColumn: "UserID",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Orders",
-                columns: table => new
-                {
-                    OrderID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    OrderUserUserID = table.Column<int>(type: "int", nullable: false),
-                    OrderPaymentPaymentID = table.Column<int>(type: "int", nullable: false),
-                    OrderPharmacyPharmacyID = table.Column<int>(type: "int", nullable: false),
-                    OrderInvoiceNo = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    OrderCreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    OrderDeliveryDeliveryID = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Orders", x => x.OrderID);
-                    table.ForeignKey(
-                        name: "FK_Orders_Deliveries_OrderDeliveryDeliveryID",
-                        column: x => x.OrderDeliveryDeliveryID,
-                        principalTable: "Deliveries",
-                        principalColumn: "DeliveryID",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Orders_Payments_OrderPaymentPaymentID",
-                        column: x => x.OrderPaymentPaymentID,
-                        principalTable: "Payments",
-                        principalColumn: "PaymentID",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Orders_Pharmacies_OrderPharmacyPharmacyID",
-                        column: x => x.OrderPharmacyPharmacyID,
-                        principalTable: "Pharmacies",
-                        principalColumn: "PharmacyID",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Orders_Users_OrderUserUserID",
-                        column: x => x.OrderUserUserID,
-                        principalTable: "Users",
-                        principalColumn: "UserID",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Prescriptions",
-                columns: table => new
-                {
-                    PrescriptionID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    PrescriptionUserUserID = table.Column<int>(type: "int", nullable: false),
-                    PrescriptionFileURL = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PrescriptionStatus = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Prescriptions", x => x.PrescriptionID);
-                    table.ForeignKey(
-                        name: "FK_Prescriptions_Users_PrescriptionUserUserID",
-                        column: x => x.PrescriptionUserUserID,
-                        principalTable: "Users",
-                        principalColumn: "UserID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -260,52 +176,131 @@ namespace OnlinePharmacySystem.Web.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ProductName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ProductDescription = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ProductCategoryCategoryID = table.Column<int>(type: "int", nullable: false),
-                    ProductBrandBrandID = table.Column<int>(type: "int", nullable: false),
-                    ProductSupplierSupplierID = table.Column<int>(type: "int", nullable: false),
-                    ProductFAQsFaqID = table.Column<int>(type: "int", nullable: false),
+                    ProductCategoryID = table.Column<int>(type: "int", nullable: false),
+                    ProductBrandID = table.Column<int>(type: "int", nullable: false),
+                    ProductSupplierID = table.Column<int>(type: "int", nullable: false),
+                    ProductFAQsID = table.Column<int>(type: "int", nullable: false),
                     ProductImageURL = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ProductPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    OrdersOrderID = table.Column<int>(type: "int", nullable: true),
-                    PharmaciesPharmacyID = table.Column<int>(type: "int", nullable: true)
+                    ProductPharmaciesID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Products", x => x.ProductID);
                     table.ForeignKey(
-                        name: "FK_Products_Brands_ProductBrandBrandID",
-                        column: x => x.ProductBrandBrandID,
+                        name: "FK_Products_Brands_ProductBrandID",
+                        column: x => x.ProductBrandID,
                         principalTable: "Brands",
                         principalColumn: "BrandID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Products_Categories_ProductCategoryCategoryID",
-                        column: x => x.ProductCategoryCategoryID,
+                        name: "FK_Products_Categories_ProductCategoryID",
+                        column: x => x.ProductCategoryID,
                         principalTable: "Categories",
                         principalColumn: "CategoryID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Products_FAQs_ProductFAQsFaqID",
-                        column: x => x.ProductFAQsFaqID,
+                        name: "FK_Products_FAQs_ProductFAQsID",
+                        column: x => x.ProductFAQsID,
                         principalTable: "FAQs",
                         principalColumn: "FaqID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Products_Orders_OrdersOrderID",
-                        column: x => x.OrdersOrderID,
-                        principalTable: "Orders",
-                        principalColumn: "OrderID");
-                    table.ForeignKey(
-                        name: "FK_Products_Pharmacies_PharmaciesPharmacyID",
-                        column: x => x.PharmaciesPharmacyID,
+                        name: "FK_Products_Pharmacies_ProductPharmaciesID",
+                        column: x => x.ProductPharmaciesID,
                         principalTable: "Pharmacies",
-                        principalColumn: "PharmacyID");
+                        principalColumn: "PharmacyID",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Products_Suppliers_ProductSupplierSupplierID",
-                        column: x => x.ProductSupplierSupplierID,
+                        name: "FK_Products_Suppliers_ProductSupplierID",
+                        column: x => x.ProductSupplierID,
                         principalTable: "Suppliers",
                         principalColumn: "SupplierID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Baskets",
+                columns: table => new
+                {
+                    BasketID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    BasketUserID = table.Column<int>(type: "int", nullable: false),
+                    BasketDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Baskets", x => x.BasketID);
+                    table.ForeignKey(
+                        name: "FK_Baskets_Users_BasketUserID",
+                        column: x => x.BasketUserID,
+                        principalTable: "Users",
+                        principalColumn: "UserID",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Orders",
+                columns: table => new
+                {
+                    OrderID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    OrderUserID = table.Column<int>(type: "int", nullable: false),
+                    OrderPaymentID = table.Column<int>(type: "int", nullable: false),
+                    OrderPharmacyID = table.Column<int>(type: "int", nullable: false),
+                    OrderInvoiceNo = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    OrderCreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    OrderDeliveryID = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Orders", x => x.OrderID);
+                    table.ForeignKey(
+                        name: "FK_Orders_Deliveries_OrderDeliveryID",
+                        column: x => x.OrderDeliveryID,
+                        principalTable: "Deliveries",
+                        principalColumn: "DeliveryID",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Orders_Payments_OrderPaymentID",
+                        column: x => x.OrderPaymentID,
+                        principalTable: "Payments",
+                        principalColumn: "PaymentID",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Orders_Pharmacies_OrderPharmacyID",
+                        column: x => x.OrderPharmacyID,
+                        principalTable: "Pharmacies",
+                        principalColumn: "PharmacyID",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Orders_Users_OrderUserID",
+                        column: x => x.OrderUserID,
+                        principalTable: "Users",
+                        principalColumn: "UserID",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Prescriptions",
+                columns: table => new
+                {
+                    PrescriptionID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    PrescriptionUserID = table.Column<int>(type: "int", nullable: false),
+                    PrescriptionFileURL = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PrescriptionStatus = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Prescriptions", x => x.PrescriptionID);
+                    table.ForeignKey(
+                        name: "FK_Prescriptions_Users_PrescriptionUserID",
+                        column: x => x.PrescriptionUserID,
+                        principalTable: "Users",
+                        principalColumn: "UserID",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -314,8 +309,8 @@ namespace OnlinePharmacySystem.Web.Migrations
                 {
                     OrderDetailID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    OrderDetailOrderOrderID = table.Column<int>(type: "int", nullable: false),
-                    OrderDetailProductProductID = table.Column<int>(type: "int", nullable: false),
+                    OrderID = table.Column<int>(type: "int", nullable: false),
+                    ProductID = table.Column<int>(type: "int", nullable: false),
                     Quantity = table.Column<int>(type: "int", nullable: false),
                     TotalAmount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     TaxRate = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
@@ -330,23 +325,23 @@ namespace OnlinePharmacySystem.Web.Migrations
                         principalTable: "Baskets",
                         principalColumn: "BasketID");
                     table.ForeignKey(
-                        name: "FK_OrderDetails_Orders_OrderDetailOrderOrderID",
-                        column: x => x.OrderDetailOrderOrderID,
+                        name: "FK_OrderDetails_Orders_OrderID",
+                        column: x => x.OrderID,
                         principalTable: "Orders",
                         principalColumn: "OrderID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_OrderDetails_Products_OrderDetailProductProductID",
-                        column: x => x.OrderDetailProductProductID,
+                        name: "FK_OrderDetails_Products_ProductID",
+                        column: x => x.ProductID,
                         principalTable: "Products",
                         principalColumn: "ProductID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Baskets_BasketUserUserID",
+                name: "IX_Baskets_BasketUserID",
                 table: "Baskets",
-                column: "BasketUserUserID");
+                column: "BasketUserID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_OrderDetails_BasketID",
@@ -354,74 +349,69 @@ namespace OnlinePharmacySystem.Web.Migrations
                 column: "BasketID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_OrderDetails_OrderDetailOrderOrderID",
+                name: "IX_OrderDetails_OrderID",
                 table: "OrderDetails",
-                column: "OrderDetailOrderOrderID");
+                column: "OrderID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_OrderDetails_OrderDetailProductProductID",
+                name: "IX_OrderDetails_ProductID",
                 table: "OrderDetails",
-                column: "OrderDetailProductProductID");
+                column: "ProductID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Orders_OrderDeliveryDeliveryID",
+                name: "IX_Orders_OrderDeliveryID",
                 table: "Orders",
-                column: "OrderDeliveryDeliveryID");
+                column: "OrderDeliveryID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Orders_OrderPaymentPaymentID",
+                name: "IX_Orders_OrderPaymentID",
                 table: "Orders",
-                column: "OrderPaymentPaymentID");
+                column: "OrderPaymentID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Orders_OrderPharmacyPharmacyID",
+                name: "IX_Orders_OrderPharmacyID",
                 table: "Orders",
-                column: "OrderPharmacyPharmacyID");
+                column: "OrderPharmacyID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Orders_OrderUserUserID",
+                name: "IX_Orders_OrderUserID",
                 table: "Orders",
-                column: "OrderUserUserID");
+                column: "OrderUserID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Prescriptions_PrescriptionUserUserID",
+                name: "IX_Prescriptions_PrescriptionUserID",
                 table: "Prescriptions",
-                column: "PrescriptionUserUserID");
+                column: "PrescriptionUserID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Products_OrdersOrderID",
+                name: "IX_Products_ProductBrandID",
                 table: "Products",
-                column: "OrdersOrderID");
+                column: "ProductBrandID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Products_PharmaciesPharmacyID",
+                name: "IX_Products_ProductCategoryID",
                 table: "Products",
-                column: "PharmaciesPharmacyID");
+                column: "ProductCategoryID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Products_ProductBrandBrandID",
+                name: "IX_Products_ProductFAQsID",
                 table: "Products",
-                column: "ProductBrandBrandID");
+                column: "ProductFAQsID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Products_ProductCategoryCategoryID",
+                name: "IX_Products_ProductPharmaciesID",
                 table: "Products",
-                column: "ProductCategoryCategoryID");
+                column: "ProductPharmaciesID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Products_ProductFAQsFaqID",
+                name: "IX_Products_ProductSupplierID",
                 table: "Products",
-                column: "ProductFAQsFaqID");
+                column: "ProductSupplierID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Products_ProductSupplierSupplierID",
-                table: "Products",
-                column: "ProductSupplierSupplierID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Users_UserRoleRoleID",
+                name: "IX_Users_UserRoleID",
                 table: "Users",
-                column: "UserRoleRoleID");
+                column: "UserRoleID");
         }
 
         /// <inheritdoc />
@@ -440,7 +430,19 @@ namespace OnlinePharmacySystem.Web.Migrations
                 name: "Baskets");
 
             migrationBuilder.DropTable(
+                name: "Orders");
+
+            migrationBuilder.DropTable(
                 name: "Products");
+
+            migrationBuilder.DropTable(
+                name: "Deliveries");
+
+            migrationBuilder.DropTable(
+                name: "Payments");
+
+            migrationBuilder.DropTable(
+                name: "Users");
 
             migrationBuilder.DropTable(
                 name: "Brands");
@@ -452,22 +454,10 @@ namespace OnlinePharmacySystem.Web.Migrations
                 name: "FAQs");
 
             migrationBuilder.DropTable(
-                name: "Orders");
-
-            migrationBuilder.DropTable(
-                name: "Suppliers");
-
-            migrationBuilder.DropTable(
-                name: "Deliveries");
-
-            migrationBuilder.DropTable(
-                name: "Payments");
-
-            migrationBuilder.DropTable(
                 name: "Pharmacies");
 
             migrationBuilder.DropTable(
-                name: "Users");
+                name: "Suppliers");
 
             migrationBuilder.DropTable(
                 name: "Roles");

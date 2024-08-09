@@ -33,12 +33,12 @@ namespace OnlinePharmacySystem.Web.Migrations
                     b.Property<DateTime>("BasketDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("BasketUserUserID")
+                    b.Property<int>("BasketUserID")
                         .HasColumnType("int");
 
                     b.HasKey("BasketID");
 
-                    b.HasIndex("BasketUserUserID");
+                    b.HasIndex("BasketUserID");
 
                     b.ToTable("Baskets");
                 });
@@ -173,10 +173,10 @@ namespace OnlinePharmacySystem.Web.Migrations
                     b.Property<int?>("BasketID")
                         .HasColumnType("int");
 
-                    b.Property<int>("OrderDetailOrderOrderID")
+                    b.Property<int>("OrderID")
                         .HasColumnType("int");
 
-                    b.Property<int>("OrderDetailProductProductID")
+                    b.Property<int>("ProductID")
                         .HasColumnType("int");
 
                     b.Property<int>("Quantity")
@@ -192,9 +192,9 @@ namespace OnlinePharmacySystem.Web.Migrations
 
                     b.HasIndex("BasketID");
 
-                    b.HasIndex("OrderDetailOrderOrderID");
+                    b.HasIndex("OrderID");
 
-                    b.HasIndex("OrderDetailProductProductID");
+                    b.HasIndex("ProductID");
 
                     b.ToTable("OrderDetails");
                 });
@@ -210,31 +210,31 @@ namespace OnlinePharmacySystem.Web.Migrations
                     b.Property<DateTime>("OrderCreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("OrderDeliveryDeliveryID")
+                    b.Property<int>("OrderDeliveryID")
                         .HasColumnType("int");
 
                     b.Property<string>("OrderInvoiceNo")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("OrderPaymentPaymentID")
+                    b.Property<int>("OrderPaymentID")
                         .HasColumnType("int");
 
-                    b.Property<int>("OrderPharmacyPharmacyID")
+                    b.Property<int>("OrderPharmacyID")
                         .HasColumnType("int");
 
-                    b.Property<int>("OrderUserUserID")
+                    b.Property<int>("OrderUserID")
                         .HasColumnType("int");
 
                     b.HasKey("OrderID");
 
-                    b.HasIndex("OrderDeliveryDeliveryID");
+                    b.HasIndex("OrderDeliveryID");
 
-                    b.HasIndex("OrderPaymentPaymentID");
+                    b.HasIndex("OrderPaymentID");
 
-                    b.HasIndex("OrderPharmacyPharmacyID");
+                    b.HasIndex("OrderPharmacyID");
 
-                    b.HasIndex("OrderUserUserID");
+                    b.HasIndex("OrderUserID");
 
                     b.ToTable("Orders");
                 });
@@ -304,12 +304,12 @@ namespace OnlinePharmacySystem.Web.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PrescriptionUserUserID")
+                    b.Property<int>("PrescriptionUserID")
                         .HasColumnType("int");
 
                     b.HasKey("PrescriptionID");
 
-                    b.HasIndex("PrescriptionUserUserID");
+                    b.HasIndex("PrescriptionUserID");
 
                     b.ToTable("Prescriptions");
                 });
@@ -322,23 +322,17 @@ namespace OnlinePharmacySystem.Web.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductID"));
 
-                    b.Property<int?>("OrdersOrderID")
+                    b.Property<int>("ProductBrandID")
                         .HasColumnType("int");
 
-                    b.Property<int?>("PharmaciesPharmacyID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProductBrandBrandID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProductCategoryCategoryID")
+                    b.Property<int>("ProductCategoryID")
                         .HasColumnType("int");
 
                     b.Property<string>("ProductDescription")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ProductFAQsFaqID")
+                    b.Property<int>("ProductFAQsID")
                         .HasColumnType("int");
 
                     b.Property<string>("ProductImageURL")
@@ -349,25 +343,26 @@ namespace OnlinePharmacySystem.Web.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("ProductPharmaciesID")
+                        .HasColumnType("int");
+
                     b.Property<decimal>("ProductPrice")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("ProductSupplierSupplierID")
+                    b.Property<int>("ProductSupplierID")
                         .HasColumnType("int");
 
                     b.HasKey("ProductID");
 
-                    b.HasIndex("OrdersOrderID");
+                    b.HasIndex("ProductBrandID");
 
-                    b.HasIndex("PharmaciesPharmacyID");
+                    b.HasIndex("ProductCategoryID");
 
-                    b.HasIndex("ProductBrandBrandID");
+                    b.HasIndex("ProductFAQsID");
 
-                    b.HasIndex("ProductCategoryCategoryID");
+                    b.HasIndex("ProductPharmaciesID");
 
-                    b.HasIndex("ProductFAQsFaqID");
-
-                    b.HasIndex("ProductSupplierSupplierID");
+                    b.HasIndex("ProductSupplierID");
 
                     b.ToTable("Products");
                 });
@@ -449,12 +444,12 @@ namespace OnlinePharmacySystem.Web.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UserRoleRoleID")
+                    b.Property<int>("UserRoleID")
                         .HasColumnType("int");
 
                     b.HasKey("UserID");
 
-                    b.HasIndex("UserRoleRoleID");
+                    b.HasIndex("UserRoleID");
 
                     b.ToTable("Users");
                 });
@@ -463,8 +458,8 @@ namespace OnlinePharmacySystem.Web.Migrations
                 {
                     b.HasOne("onlinePharmacySystem.Web.Models.Users", "BasketUser")
                         .WithMany()
-                        .HasForeignKey("BasketUserUserID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasForeignKey("BasketUserID")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("BasketUser");
@@ -478,14 +473,14 @@ namespace OnlinePharmacySystem.Web.Migrations
 
                     b.HasOne("onlinePharmacySystem.Web.Models.Orders", "OrderDetailOrder")
                         .WithMany()
-                        .HasForeignKey("OrderDetailOrderOrderID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasForeignKey("OrderID")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("onlinePharmacySystem.Web.Models.Products", "OrderDetailProduct")
                         .WithMany()
-                        .HasForeignKey("OrderDetailProductProductID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasForeignKey("ProductID")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("OrderDetailOrder");
@@ -497,26 +492,26 @@ namespace OnlinePharmacySystem.Web.Migrations
                 {
                     b.HasOne("onlinePharmacySystem.Web.Models.Deliveries", "OrderDelivery")
                         .WithMany()
-                        .HasForeignKey("OrderDeliveryDeliveryID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasForeignKey("OrderDeliveryID")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("onlinePharmacySystem.Web.Models.Payments", "OrderPayment")
                         .WithMany()
-                        .HasForeignKey("OrderPaymentPaymentID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasForeignKey("OrderPaymentID")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("onlinePharmacySystem.Web.Models.Pharmacies", "OrderPharmacy")
                         .WithMany()
-                        .HasForeignKey("OrderPharmacyPharmacyID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasForeignKey("OrderPharmacyID")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("onlinePharmacySystem.Web.Models.Users", "OrderUser")
                         .WithMany()
-                        .HasForeignKey("OrderUserUserID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasForeignKey("OrderUserID")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("OrderDelivery");
@@ -532,8 +527,8 @@ namespace OnlinePharmacySystem.Web.Migrations
                 {
                     b.HasOne("onlinePharmacySystem.Web.Models.Users", "PrescriptionUser")
                         .WithMany()
-                        .HasForeignKey("PrescriptionUserUserID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasForeignKey("PrescriptionUserID")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("PrescriptionUser");
@@ -541,36 +536,34 @@ namespace OnlinePharmacySystem.Web.Migrations
 
             modelBuilder.Entity("onlinePharmacySystem.Web.Models.Products", b =>
                 {
-                    b.HasOne("onlinePharmacySystem.Web.Models.Orders", null)
-                        .WithMany("OrderProducts")
-                        .HasForeignKey("OrdersOrderID");
-
-                    b.HasOne("onlinePharmacySystem.Web.Models.Pharmacies", null)
-                        .WithMany("PharmacyProducts")
-                        .HasForeignKey("PharmaciesPharmacyID");
-
                     b.HasOne("onlinePharmacySystem.Web.Models.Brands", "ProductBrand")
                         .WithMany()
-                        .HasForeignKey("ProductBrandBrandID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasForeignKey("ProductBrandID")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("onlinePharmacySystem.Web.Models.Categories", "ProductCategory")
                         .WithMany()
-                        .HasForeignKey("ProductCategoryCategoryID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasForeignKey("ProductCategoryID")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("onlinePharmacySystem.Web.Models.FAQs", "ProductFAQs")
                         .WithMany()
-                        .HasForeignKey("ProductFAQsFaqID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasForeignKey("ProductFAQsID")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("onlinePharmacySystem.Web.Models.Pharmacies", "ProductPharmacies")
+                        .WithMany("PharmacyProducts")
+                        .HasForeignKey("ProductPharmaciesID")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("onlinePharmacySystem.Web.Models.Suppliers", "ProductSupplier")
                         .WithMany()
-                        .HasForeignKey("ProductSupplierSupplierID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasForeignKey("ProductSupplierID")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("ProductBrand");
@@ -579,6 +572,8 @@ namespace OnlinePharmacySystem.Web.Migrations
 
                     b.Navigation("ProductFAQs");
 
+                    b.Navigation("ProductPharmacies");
+
                     b.Navigation("ProductSupplier");
                 });
 
@@ -586,8 +581,8 @@ namespace OnlinePharmacySystem.Web.Migrations
                 {
                     b.HasOne("onlinePharmacySystem.Web.Models.Roles", "UserRole")
                         .WithMany()
-                        .HasForeignKey("UserRoleRoleID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasForeignKey("UserRoleID")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("UserRole");
@@ -596,11 +591,6 @@ namespace OnlinePharmacySystem.Web.Migrations
             modelBuilder.Entity("onlinePharmacySystem.Web.Models.Basket", b =>
                 {
                     b.Navigation("BasketOrderDetails");
-                });
-
-            modelBuilder.Entity("onlinePharmacySystem.Web.Models.Orders", b =>
-                {
-                    b.Navigation("OrderProducts");
                 });
 
             modelBuilder.Entity("onlinePharmacySystem.Web.Models.Pharmacies", b =>

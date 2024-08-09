@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System;
-
-namespace onlinePharmacySystem.Web.Models
+﻿namespace onlinePharmacySystem.Web.Models
 {
     public class Payments
     {
