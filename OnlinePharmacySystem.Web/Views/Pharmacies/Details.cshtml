@@ -1,0 +1,29 @@
+﻿@model onlinePharmacySystem.Web.Models.Pharmacies
+
+@{
+    ViewData["Title"] = Model.PharmacyName + " - Products";
+}
+
+<h2>@Model.PharmacyName - Products</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Product Name</th>
+            <th>Brand</th>
+            <th>Description</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model.PharmacyProducts)
+        {
+            <tr>
+                <td>@product.ProductName</td>
+                <td>@product.ProductBrand.BrandName</td>
+                <td>@product.ProductDescription</td>
+                <td>@product.ProductPrice.ToString("C")</td>
+            </tr>
+        }
+    </tbody>
+</table>
