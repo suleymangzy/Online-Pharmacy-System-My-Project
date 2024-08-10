@@ -7,24 +7,8 @@
       "RelativeMoniker": "D:0:0:{3227F178-6984-4B16-A728-FF5FAA5812D3}|OnlinePharmacySystem.Web\\OnlinePharmacySystem.Web.csproj|solutionrelative:onlinepharmacysystem.web\\views\\pharmacies\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3227F178-6984-4B16-A728-FF5FAA5812D3}|OnlinePharmacySystem.Web\\OnlinePharmacySystem.Web.csproj|c:\\users\\cizgi\\documents\\proje\\onlinepharmacysystem\\onlinepharmacysystem.web\\controllers\\pharmaciescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3227F178-6984-4B16-A728-FF5FAA5812D3}|OnlinePharmacySystem.Web\\OnlinePharmacySystem.Web.csproj|solutionrelative:onlinepharmacysystem.web\\controllers\\pharmaciescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3227F178-6984-4B16-A728-FF5FAA5812D3}|OnlinePharmacySystem.Web\\OnlinePharmacySystem.Web.csproj|c:\\users\\cizgi\\documents\\proje\\onlinepharmacysystem\\onlinepharmacysystem.web\\views\\pharmacies\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3227F178-6984-4B16-A728-FF5FAA5812D3}|OnlinePharmacySystem.Web\\OnlinePharmacySystem.Web.csproj|solutionrelative:onlinepharmacysystem.web\\views\\pharmacies\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3227F178-6984-4B16-A728-FF5FAA5812D3}|OnlinePharmacySystem.Web\\OnlinePharmacySystem.Web.csproj|c:\\users\\cizgi\\documents\\proje\\onlinepharmacysystem\\onlinepharmacysystem.web\\models\\products.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3227F178-6984-4B16-A728-FF5FAA5812D3}|OnlinePharmacySystem.Web\\OnlinePharmacySystem.Web.csproj|solutionrelative:onlinepharmacysystem.web\\models\\products.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3227F178-6984-4B16-A728-FF5FAA5812D3}|OnlinePharmacySystem.Web\\OnlinePharmacySystem.Web.csproj|c:\\users\\cizgi\\documents\\proje\\onlinepharmacysystem\\onlinepharmacysystem.web\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3227F178-6984-4B16-A728-FF5FAA5812D3}|OnlinePharmacySystem.Web\\OnlinePharmacySystem.Web.csproj|solutionrelative:onlinepharmacysystem.web\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3227F178-6984-4B16-A728-FF5FAA5812D3}|OnlinePharmacySystem.Web\\OnlinePharmacySystem.Web.csproj|c:\\users\\cizgi\\documents\\proje\\onlinepharmacysystem\\onlinepharmacysystem.web\\models\\pharmacies.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3227F178-6984-4B16-A728-FF5FAA5812D3}|OnlinePharmacySystem.Web\\OnlinePharmacySystem.Web.csproj|solutionrelative:onlinepharmacysystem.web\\models\\pharmacies.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3227F178-6984-4B16-A728-FF5FAA5812D3}|OnlinePharmacySystem.Web\\OnlinePharmacySystem.Web.csproj|c:\\users\\cizgi\\documents\\proje\\onlinepharmacysystem\\onlinepharmacysystem.web\\views\\products\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3227F178-6984-4B16-A728-FF5FAA5812D3}|OnlinePharmacySystem.Web\\OnlinePharmacySystem.Web.csproj|solutionrelative:onlinepharmacysystem.web\\views\\products\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3227F178-6984-4B16-A728-FF5FAA5812D3}|OnlinePharmacySystem.Web\\OnlinePharmacySystem.Web.csproj|c:\\users\\cizgi\\documents\\proje\\onlinepharmacysystem\\onlinepharmacysystem.web\\models\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -33,6 +17,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{3227F178-6984-4B16-A728-FF5FAA5812D3}|OnlinePharmacySystem.Web\\OnlinePharmacySystem.Web.csproj|c:\\users\\cizgi\\documents\\proje\\onlinepharmacysystem\\onlinepharmacysystem.web\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3227F178-6984-4B16-A728-FF5FAA5812D3}|OnlinePharmacySystem.Web\\OnlinePharmacySystem.Web.csproj|solutionrelative:onlinepharmacysystem.web\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3227F178-6984-4B16-A728-FF5FAA5812D3}|OnlinePharmacySystem.Web\\OnlinePharmacySystem.Web.csproj|c:\\users\\cizgi\\documents\\proje\\onlinepharmacysystem\\onlinepharmacysystem.web\\models\\products.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3227F178-6984-4B16-A728-FF5FAA5812D3}|OnlinePharmacySystem.Web\\OnlinePharmacySystem.Web.csproj|solutionrelative:onlinepharmacysystem.web\\models\\products.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -52,79 +40,53 @@
               "RelativeDocumentMoniker": "OnlinePharmacySystem.Web\\Views\\Pharmacies\\Details.cshtml",
               "ToolTip": "C:\\Users\\cizgi\\Documents\\PROJE\\OnlinePharmacySystem\\OnlinePharmacySystem.Web\\Views\\Pharmacies\\Details.cshtml",
               "RelativeToolTip": "OnlinePharmacySystem.Web\\Views\\Pharmacies\\Details.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAADwvx0AAAAAAAAA",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAAwCUAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-08-10T06:45:27.193Z",
+              "WhenOpened": "2024-08-10T14:13:33.865Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\cizgi\\Documents\\PROJE\\OnlinePharmacySystem\\OnlinePharmacySystem.Web\\Views\\Products\\Index.cshtml",
+              "RelativeDocumentMoniker": "OnlinePharmacySystem.Web\\Views\\Products\\Index.cshtml",
+              "ToolTip": "C:\\Users\\cizgi\\Documents\\PROJE\\OnlinePharmacySystem\\OnlinePharmacySystem.Web\\Views\\Products\\Index.cshtml",
+              "RelativeToolTip": "OnlinePharmacySystem.Web\\Views\\Products\\Index.cshtml",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAYwCkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-10T13:27:19.084Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "Products.cs",
               "DocumentMoniker": "C:\\Users\\cizgi\\Documents\\PROJE\\OnlinePharmacySystem\\OnlinePharmacySystem.Web\\Models\\Products.cs",
               "RelativeDocumentMoniker": "OnlinePharmacySystem.Web\\Models\\Products.cs",
               "ToolTip": "C:\\Users\\cizgi\\Documents\\PROJE\\OnlinePharmacySystem\\OnlinePharmacySystem.Web\\Models\\Products.cs",
               "RelativeToolTip": "OnlinePharmacySystem.Web\\Models\\Products.cs",
-              "ViewState": "AQIAAAQAAAAAAAAAAAAAwBUAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-10T06:40:58.055Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Users\\cizgi\\Documents\\PROJE\\OnlinePharmacySystem\\OnlinePharmacySystem.Web\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "OnlinePharmacySystem.Web\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\cizgi\\Documents\\PROJE\\OnlinePharmacySystem\\OnlinePharmacySystem.Web\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "OnlinePharmacySystem.Web\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAEAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-08-10T06:33:36.148Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Pharmacies.cs",
-              "DocumentMoniker": "C:\\Users\\cizgi\\Documents\\PROJE\\OnlinePharmacySystem\\OnlinePharmacySystem.Web\\Models\\Pharmacies.cs",
-              "RelativeDocumentMoniker": "OnlinePharmacySystem.Web\\Models\\Pharmacies.cs",
-              "ToolTip": "C:\\Users\\cizgi\\Documents\\PROJE\\OnlinePharmacySystem\\OnlinePharmacySystem.Web\\Models\\Pharmacies.cs",
-              "RelativeToolTip": "OnlinePharmacySystem.Web\\Models\\Pharmacies.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-10T06:30:25.294Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 2,
               "Title": "AppDbContext.cs",
               "DocumentMoniker": "C:\\Users\\cizgi\\Documents\\PROJE\\OnlinePharmacySystem\\OnlinePharmacySystem.Web\\Models\\AppDbContext.cs",
               "RelativeDocumentMoniker": "OnlinePharmacySystem.Web\\Models\\AppDbContext.cs",
               "ToolTip": "C:\\Users\\cizgi\\Documents\\PROJE\\OnlinePharmacySystem\\OnlinePharmacySystem.Web\\Models\\AppDbContext.cs",
               "RelativeToolTip": "OnlinePharmacySystem.Web\\Models\\AppDbContext.cs",
-              "ViewState": "AQIAAI8AAAAAAAAAAAAuwJwAAAAzAAAA",
+              "ViewState": "AQIAAJAAAAAAAAAAAAAYwKwAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-10T06:30:12.472Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\cizgi\\Documents\\PROJE\\OnlinePharmacySystem\\OnlinePharmacySystem.Web\\Views\\Pharmacies\\Index.cshtml",
-              "RelativeDocumentMoniker": "OnlinePharmacySystem.Web\\Views\\Pharmacies\\Index.cshtml",
-              "ToolTip": "C:\\Users\\cizgi\\Documents\\PROJE\\OnlinePharmacySystem\\OnlinePharmacySystem.Web\\Views\\Pharmacies\\Index.cshtml",
-              "RelativeToolTip": "OnlinePharmacySystem.Web\\Views\\Pharmacies\\Index.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAMAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-08-10T06:23:33.441Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 3,
               "Title": "ProductsController.cs",
               "DocumentMoniker": "C:\\Users\\cizgi\\Documents\\PROJE\\OnlinePharmacySystem\\OnlinePharmacySystem.Web\\Controllers\\ProductsController.cs",
               "RelativeDocumentMoniker": "OnlinePharmacySystem.Web\\Controllers\\ProductsController.cs",
@@ -133,19 +95,6 @@
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-10T06:22:36.871Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "PharmaciesController.cs",
-              "DocumentMoniker": "C:\\Users\\cizgi\\Documents\\PROJE\\OnlinePharmacySystem\\OnlinePharmacySystem.Web\\Controllers\\PharmaciesController.cs",
-              "RelativeDocumentMoniker": "OnlinePharmacySystem.Web\\Controllers\\PharmaciesController.cs",
-              "ToolTip": "C:\\Users\\cizgi\\Documents\\PROJE\\OnlinePharmacySystem\\OnlinePharmacySystem.Web\\Controllers\\PharmaciesController.cs",
-              "RelativeToolTip": "OnlinePharmacySystem.Web\\Controllers\\PharmaciesController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACoAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-10T06:22:15.559Z",
               "EditorCaption": ""
             }
           ]

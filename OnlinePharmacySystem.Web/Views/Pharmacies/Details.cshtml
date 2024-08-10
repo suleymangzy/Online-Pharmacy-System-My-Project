@@ -9,6 +9,7 @@
 <table class="table table-bordered">
     <thead>
         <tr>
+            <th>Product Image</th>
             <th>Product Name</th>
             <th>Brand</th>
             <th>Description</th>
@@ -19,7 +20,14 @@
         @foreach (var product in Model.PharmacyProducts)
         {
             <tr>
-                <td>@product.ProductName</td>
+                <td>
+                    <img src="@product.ProductImageURL" alt="@product.ProductName" style="width:100px; height:auto;" />
+                </td>
+                <td>
+                    <a href="@Url.Action("Details", "Products", new { id = product.ProductID })">
+                        @product.ProductName
+                    </a>
+                </td>
                 <td>@product.ProductBrand.BrandName</td>
                 <td>@product.ProductDescription</td>
                 <td>@product.ProductPrice.ToString("C")</td>
