@@ -282,28 +282,6 @@ namespace OnlinePharmacySystem.Web.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Prescriptions",
-                columns: table => new
-                {
-                    PrescriptionID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    PrescriptionUserID = table.Column<int>(type: "int", nullable: false),
-                    PrescriptionFileURL = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PrescriptionStatus = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Prescriptions", x => x.PrescriptionID);
-                    table.ForeignKey(
-                        name: "FK_Prescriptions_Users_PrescriptionUserID",
-                        column: x => x.PrescriptionUserID,
-                        principalTable: "Users",
-                        principalColumn: "UserID",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "OrderDetails",
                 columns: table => new
                 {
@@ -313,17 +291,17 @@ namespace OnlinePharmacySystem.Web.Migrations
                     ProductID = table.Column<int>(type: "int", nullable: false),
                     Quantity = table.Column<int>(type: "int", nullable: false),
                     TotalAmount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    TaxRate = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    BasketID = table.Column<int>(type: "int", nullable: true)
+                    TaxRate = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_OrderDetails", x => x.OrderDetailID);
                     table.ForeignKey(
-                        name: "FK_OrderDetails_Baskets_BasketID",
-                        column: x => x.BasketID,
+                        name: "FK_OrderDetails_Baskets_OrderID",
+                        column: x => x.OrderID,
                         principalTable: "Baskets",
-                        principalColumn: "BasketID");
+                        principalColumn: "BasketID",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_OrderDetails_Orders_OrderID",
                         column: x => x.OrderID,
@@ -342,11 +320,6 @@ namespace OnlinePharmacySystem.Web.Migrations
                 name: "IX_Baskets_BasketUserID",
                 table: "Baskets",
                 column: "BasketUserID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_OrderDetails_BasketID",
-                table: "OrderDetails",
-                column: "BasketID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_OrderDetails_OrderID",
@@ -377,11 +350,6 @@ namespace OnlinePharmacySystem.Web.Migrations
                 name: "IX_Orders_OrderUserID",
                 table: "Orders",
                 column: "OrderUserID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Prescriptions_PrescriptionUserID",
-                table: "Prescriptions",
-                column: "PrescriptionUserID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Products_ProductBrandID",
@@ -422,9 +390,6 @@ namespace OnlinePharmacySystem.Web.Migrations
 
             migrationBuilder.DropTable(
                 name: "OrderDetails");
-
-            migrationBuilder.DropTable(
-                name: "Prescriptions");
 
             migrationBuilder.DropTable(
                 name: "Baskets");

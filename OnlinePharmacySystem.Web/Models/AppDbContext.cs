@@ -19,7 +19,6 @@ namespace onlinePharmacySystem.Web.Models
         public DbSet<Orders> Orders { get; set; }
         public DbSet<Payments> Payments { get; set; }
         public DbSet<Pharmacies> Pharmacies { get; set; }
-        public DbSet<Prescriptions> Prescriptions { get; set; }
         public DbSet<Products> Products { get; set; }
         public DbSet<Roles> Roles { get; set; }
         public DbSet<Suppliers> Suppliers { get; set; }
@@ -28,6 +27,9 @@ namespace onlinePharmacySystem.Web.Models
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // Define primary keys
+            modelBuilder.Entity<Basket>()
+                .HasKey(b => b.BasketID);
+
             modelBuilder.Entity<BlogPosts>()
                 .HasKey(b => b.BlogPostID);
 
@@ -54,9 +56,6 @@ namespace onlinePharmacySystem.Web.Models
 
             modelBuilder.Entity<Pharmacies>()
                 .HasKey(p => p.PharmacyID);
-
-            modelBuilder.Entity<Prescriptions>()
-                .HasKey(p => p.PrescriptionID);
 
             modelBuilder.Entity<Products>()
                 .HasKey(p => p.ProductID);
@@ -107,12 +106,6 @@ namespace onlinePharmacySystem.Web.Models
                 .HasForeignKey(p => p.ProductPharmaciesID)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            modelBuilder.Entity<Prescriptions>()
-                .HasOne(p => p.PrescriptionUser)
-                .WithMany()
-                .HasForeignKey(p => p.PrescriptionUserID)
-                .OnDelete(DeleteBehavior.Restrict);
-
             modelBuilder.Entity<Orders>()
                 .HasOne(o => o.OrderUser)
                 .WithMany()
@@ -156,6 +149,12 @@ namespace onlinePharmacySystem.Web.Models
                 .HasForeignKey(od => od.ProductID)
                 .OnDelete(DeleteBehavior.Restrict);
 
+            // Configure Basket and OrderDetails relationships
+            modelBuilder.Entity<Basket>()
+                .HasMany(b => b.BasketOrderDetails)
+                .WithOne()
+                .HasForeignKey(od => od.OrderID)
+                .OnDelete(DeleteBehavior.Restrict);
 
             // Decimal properties
             modelBuilder.Entity<OrderDetails>()

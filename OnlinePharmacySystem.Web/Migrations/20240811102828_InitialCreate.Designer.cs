@@ -12,7 +12,7 @@ using onlinePharmacySystem.Web.Models;
 namespace OnlinePharmacySystem.Web.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240809114309_InitialCreate")]
+    [Migration("20240811102828_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -173,9 +173,6 @@ namespace OnlinePharmacySystem.Web.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderDetailID"));
 
-                    b.Property<int?>("BasketID")
-                        .HasColumnType("int");
-
                     b.Property<int>("OrderID")
                         .HasColumnType("int");
 
@@ -192,8 +189,6 @@ namespace OnlinePharmacySystem.Web.Migrations
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("OrderDetailID");
-
-                    b.HasIndex("BasketID");
 
                     b.HasIndex("OrderID");
 
@@ -286,35 +281,6 @@ namespace OnlinePharmacySystem.Web.Migrations
                     b.HasKey("PharmacyID");
 
                     b.ToTable("Pharmacies");
-                });
-
-            modelBuilder.Entity("onlinePharmacySystem.Web.Models.Prescriptions", b =>
-                {
-                    b.Property<int>("PrescriptionID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PrescriptionID"));
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("PrescriptionFileURL")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PrescriptionStatus")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("PrescriptionUserID")
-                        .HasColumnType("int");
-
-                    b.HasKey("PrescriptionID");
-
-                    b.HasIndex("PrescriptionUserID");
-
-                    b.ToTable("Prescriptions");
                 });
 
             modelBuilder.Entity("onlinePharmacySystem.Web.Models.Products", b =>
@@ -472,7 +438,9 @@ namespace OnlinePharmacySystem.Web.Migrations
                 {
                     b.HasOne("onlinePharmacySystem.Web.Models.Basket", null)
                         .WithMany("BasketOrderDetails")
-                        .HasForeignKey("BasketID");
+                        .HasForeignKey("OrderID")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
                     b.HasOne("onlinePharmacySystem.Web.Models.Orders", "OrderDetailOrder")
                         .WithMany()
@@ -524,17 +492,6 @@ namespace OnlinePharmacySystem.Web.Migrations
                     b.Navigation("OrderPharmacy");
 
                     b.Navigation("OrderUser");
-                });
-
-            modelBuilder.Entity("onlinePharmacySystem.Web.Models.Prescriptions", b =>
-                {
-                    b.HasOne("onlinePharmacySystem.Web.Models.Users", "PrescriptionUser")
-                        .WithMany()
-                        .HasForeignKey("PrescriptionUserID")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("PrescriptionUser");
                 });
 
             modelBuilder.Entity("onlinePharmacySystem.Web.Models.Products", b =>
