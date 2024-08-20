@@ -18,8 +18,20 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\cizgi\Documents\PROJE\OnlinePharmacySystem\OnlinePharmacySystem.Web
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/cizgi/Documents/PROJE/OnlinePharmacySystem/OnlinePharmacySystem.Web/Views/Basket/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFza2V0XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/cizgi/Documents/PROJE/OnlinePharmacySystem/OnlinePharmacySystem.Web/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cizgi/Documents/PROJE/OnlinePharmacySystem/OnlinePharmacySystem.Web/Views/Orders/Detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJzXERldGFpbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/cizgi/Documents/PROJE/OnlinePharmacySystem/OnlinePharmacySystem.Web/Views/Orders/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/cizgi/Documents/PROJE/OnlinePharmacySystem/OnlinePharmacySystem.Web/Views/Pharmacies/Details.cshtml]

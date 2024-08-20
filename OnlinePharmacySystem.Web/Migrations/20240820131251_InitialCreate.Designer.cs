@@ -12,7 +12,7 @@ using onlinePharmacySystem.Web.Models;
 namespace OnlinePharmacySystem.Web.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240811102828_InitialCreate")]
+    [Migration("20240820131251_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -24,6 +24,48 @@ namespace OnlinePharmacySystem.Web.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("OnlinePharmacySystem.Web.Models.Prescriptions", b =>
+                {
+                    b.Property<int>("PrescriptionID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PrescriptionID"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DoctorName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FileURL")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("HospitalName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ProductID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserID")
+                        .HasColumnType("int");
+
+                    b.HasKey("PrescriptionID");
+
+                    b.HasIndex("ProductID");
+
+                    b.HasIndex("UserID");
+
+                    b.ToTable("Prescriptions");
+                });
 
             modelBuilder.Entity("onlinePharmacySystem.Web.Models.Basket", b =>
                 {
@@ -168,10 +210,7 @@ namespace OnlinePharmacySystem.Web.Migrations
             modelBuilder.Entity("onlinePharmacySystem.Web.Models.OrderDetails", b =>
                 {
                     b.Property<int>("OrderDetailID")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderDetailID"));
 
                     b.Property<int>("OrderID")
                         .HasColumnType("int");
@@ -423,6 +462,25 @@ namespace OnlinePharmacySystem.Web.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("OnlinePharmacySystem.Web.Models.Prescriptions", b =>
+                {
+                    b.HasOne("onlinePharmacySystem.Web.Models.Products", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductID")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("onlinePharmacySystem.Web.Models.Users", "User")
+                        .WithMany()
+                        .HasForeignKey("UserID")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("onlinePharmacySystem.Web.Models.Basket", b =>
                 {
                     b.HasOne("onlinePharmacySystem.Web.Models.Users", "BasketUser")
@@ -438,12 +496,12 @@ namespace OnlinePharmacySystem.Web.Migrations
                 {
                     b.HasOne("onlinePharmacySystem.Web.Models.Basket", null)
                         .WithMany("BasketOrderDetails")
-                        .HasForeignKey("OrderID")
+                        .HasForeignKey("OrderDetailID")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("onlinePharmacySystem.Web.Models.Orders", "OrderDetailOrder")
-                        .WithMany()
+                        .WithMany("OrderDetails")
                         .HasForeignKey("OrderID")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -551,6 +609,11 @@ namespace OnlinePharmacySystem.Web.Migrations
             modelBuilder.Entity("onlinePharmacySystem.Web.Models.Basket", b =>
                 {
                     b.Navigation("BasketOrderDetails");
+                });
+
+            modelBuilder.Entity("onlinePharmacySystem.Web.Models.Orders", b =>
+                {
+                    b.Navigation("OrderDetails");
                 });
 
             modelBuilder.Entity("onlinePharmacySystem.Web.Models.Pharmacies", b =>

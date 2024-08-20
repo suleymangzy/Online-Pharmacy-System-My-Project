@@ -1,4 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using onlinePharmacySystem.Web.Models;
+using OnlinePharmacySystem.Web.Models;
 
 namespace onlinePharmacySystem.Web.Models
 {
@@ -23,10 +25,11 @@ namespace onlinePharmacySystem.Web.Models
         public DbSet<Roles> Roles { get; set; }
         public DbSet<Suppliers> Suppliers { get; set; }
         public DbSet<Users> Users { get; set; }
+        public DbSet<Prescriptions> Prescriptions { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // Define primary keys
+            
             modelBuilder.Entity<Basket>()
                 .HasKey(b => b.BasketID);
 
@@ -69,7 +72,10 @@ namespace onlinePharmacySystem.Web.Models
             modelBuilder.Entity<Users>()
                 .HasKey(u => u.UserID);
 
-            // Define relationships with restricted cascade delete
+            modelBuilder.Entity<Prescriptions>()
+                .HasKey(p => p.PrescriptionID);
+
+            
             modelBuilder.Entity<Users>()
                 .HasOne(u => u.UserRole)
                 .WithMany()
@@ -130,18 +136,12 @@ namespace onlinePharmacySystem.Web.Models
                 .HasForeignKey(o => o.OrderDeliveryID)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            modelBuilder.Entity<Basket>()
-                .HasOne(b => b.BasketUser)
-                .WithMany()
-                .HasForeignKey(b => b.BasketUserID)
-                .OnDelete(DeleteBehavior.Restrict);
-
-            // Fix OrderDetails foreign keys to avoid cascade paths
-            modelBuilder.Entity<OrderDetails>()
-                .HasOne(od => od.OrderDetailOrder)
-                .WithMany()
-                .HasForeignKey(od => od.OrderID)
-                .OnDelete(DeleteBehavior.Restrict);
+         
+            modelBuilder.Entity<Orders>()
+               .HasMany(o => o.OrderDetails)
+               .WithOne(od => od.OrderDetailOrder)
+               .HasForeignKey(od => od.OrderID)
+               .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<OrderDetails>()
                 .HasOne(od => od.OrderDetailProduct)
@@ -149,14 +149,32 @@ namespace onlinePharmacySystem.Web.Models
                 .HasForeignKey(od => od.ProductID)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            // Configure Basket and OrderDetails relationships
+          
             modelBuilder.Entity<Basket>()
                 .HasMany(b => b.BasketOrderDetails)
                 .WithOne()
-                .HasForeignKey(od => od.OrderID)
+                .HasForeignKey(od => od.OrderDetailID)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            // Decimal properties
+            modelBuilder.Entity<Basket>()
+                .HasOne(b => b.BasketUser)
+                .WithMany()
+                .HasForeignKey(b => b.BasketUserID)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Prescriptions>()
+                .HasOne(p => p.User)
+                .WithMany()
+                .HasForeignKey(p => p.UserID)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Prescriptions>()
+                .HasOne(p => p.Product)
+                .WithMany()
+                .HasForeignKey(p => p.ProductID)
+                .OnDelete(DeleteBehavior.Restrict);
+
+         
             modelBuilder.Entity<OrderDetails>()
                 .Property(o => o.TaxRate)
                 .HasColumnType("decimal(18,2)");

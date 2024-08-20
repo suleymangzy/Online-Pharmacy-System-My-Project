@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Orders>
+
+@{
+    ViewData["Title"] = "Orders";
+}
+
+<h1>Orders</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Order ID</th>
+            <th>Invoice Number</th>
+            <th>Created At</th>
+            <th>Pharmacy</th>
+            <th>Delivery</th>
+            <th>Payment</th>
+            <th>Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var order in Model)
+        {
+            <tr>
+                <td>@order.OrderID</td>
+                <td>@order.OrderInvoiceNo</td>
+                <td>@order.OrderCreatedAt.ToShortDateString()</td>
+                <td>@order.OrderPharmacy?.PharmacyName</td>
+                <td>@order.OrderDelivery?.DeliveryStatus</td>
+                <td>@order.OrderPayment?.PaymentType</td>
+                <td>
+                    <a href="@Url.Action("Detail", new { id = order.OrderID })">View Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

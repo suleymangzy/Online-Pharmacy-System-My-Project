@@ -282,11 +282,41 @@ namespace OnlinePharmacySystem.Web.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Prescriptions",
+                columns: table => new
+                {
+                    PrescriptionID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FileURL = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Status = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DoctorName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    HospitalName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UserID = table.Column<int>(type: "int", nullable: false),
+                    ProductID = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Prescriptions", x => x.PrescriptionID);
+                    table.ForeignKey(
+                        name: "FK_Prescriptions_Products_ProductID",
+                        column: x => x.ProductID,
+                        principalTable: "Products",
+                        principalColumn: "ProductID",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Prescriptions_Users_UserID",
+                        column: x => x.UserID,
+                        principalTable: "Users",
+                        principalColumn: "UserID",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "OrderDetails",
                 columns: table => new
                 {
-                    OrderDetailID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    OrderDetailID = table.Column<int>(type: "int", nullable: false),
                     OrderID = table.Column<int>(type: "int", nullable: false),
                     ProductID = table.Column<int>(type: "int", nullable: false),
                     Quantity = table.Column<int>(type: "int", nullable: false),
@@ -297,8 +327,8 @@ namespace OnlinePharmacySystem.Web.Migrations
                 {
                     table.PrimaryKey("PK_OrderDetails", x => x.OrderDetailID);
                     table.ForeignKey(
-                        name: "FK_OrderDetails_Baskets_OrderID",
-                        column: x => x.OrderID,
+                        name: "FK_OrderDetails_Baskets_OrderDetailID",
+                        column: x => x.OrderDetailID,
                         principalTable: "Baskets",
                         principalColumn: "BasketID",
                         onDelete: ReferentialAction.Restrict);
@@ -352,6 +382,16 @@ namespace OnlinePharmacySystem.Web.Migrations
                 column: "OrderUserID");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Prescriptions_ProductID",
+                table: "Prescriptions",
+                column: "ProductID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Prescriptions_UserID",
+                table: "Prescriptions",
+                column: "UserID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Products_ProductBrandID",
                 table: "Products",
                 column: "ProductBrandID");
@@ -390,6 +430,9 @@ namespace OnlinePharmacySystem.Web.Migrations
 
             migrationBuilder.DropTable(
                 name: "OrderDetails");
+
+            migrationBuilder.DropTable(
+                name: "Prescriptions");
 
             migrationBuilder.DropTable(
                 name: "Baskets");
