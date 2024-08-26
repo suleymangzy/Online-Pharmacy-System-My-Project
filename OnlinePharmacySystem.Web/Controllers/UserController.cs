@@ -1,5 +1,4 @@
-﻿using Azure.Identity;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using onlinePharmacySystem.Web.Models;
 using System;
 using System.Linq;
@@ -29,7 +28,8 @@ namespace onlinePharmacySystem.Web.Controllers
         {
             if (!ModelState.IsValid)
             {
-                TempData["SuccessMessage"] = "bütün alanları doldurun";
+                TempData["SuccessMessage"] = "Bütün alanları doldurun";
+                return View(user);
             }
 
             try
@@ -38,27 +38,24 @@ namespace onlinePharmacySystem.Web.Controllers
                 user.UserRoleID = 1; // Default role ID for a new user
 
                 _context.Users.Add(user);
-                int result = await _context.SaveChangesAsync(); // This is the asynchronous operation
+                int result = await _context.SaveChangesAsync();
 
                 if (result > 0)
                 {
                     TempData["SuccessMessage"] = "Başarıyla sisteme kayıt edildiniz.";
+                    return RedirectToAction("Login");
                 }
                 else
                 {
                     TempData["SuccessMessage"] = "Kayıt sırasında bir hata oluştu. Lütfen tekrar deneyin.";
-
                     ModelState.AddModelError("", "Kayıt sırasında bir hata oluştu. Lütfen tekrar deneyin.");
                 }
-                return RedirectToAction("Login");
             }
             catch (Exception ex)
             {
-                // Log the exception
                 Console.WriteLine($"An error occurred: {ex.Message}");
                 ModelState.AddModelError("", "Kayıt sırasında bir hata oluştu. Lütfen tekrar deneyin.");
             }
-
 
             return View(user);
         }
@@ -75,9 +72,9 @@ namespace onlinePharmacySystem.Web.Controllers
         public IActionResult Login(string UserName, string UserPassword)
         {
             var user = _context.Users.FirstOrDefault(u
-            => u.UserName == UserName
-            && u.UserPassword == UserPassword
-            && u.UserID > 0
+                => u.UserName == UserName
+                && u.UserPassword == UserPassword
+                && u.UserID > 0
             );
 
             if (user == null)
@@ -86,10 +83,11 @@ namespace onlinePharmacySystem.Web.Controllers
                 return View();
             }
 
-            // Set user session or authentication ticket here
-            // For example: HttpContext.Session.SetString("UserName", user.UserName);
+            // Set user ID in session
+            HttpContext.Session.SetInt32("UserID", user.UserID);
 
             return RedirectToAction("Index", "Home");
         }
     }
 }
+

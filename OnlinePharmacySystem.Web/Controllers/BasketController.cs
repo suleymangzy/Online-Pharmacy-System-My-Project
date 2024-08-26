@@ -19,16 +19,20 @@ namespace onlinePharmacySystem.Web.Controllers
         // GET: Basket
         public async Task<IActionResult> Index()
         {
-            var userId = 1; // Örnek kullanıcı ID, oturumdan dinamik olarak almanız gerekecek
+            var userId = HttpContext.Session.GetInt32("UserID");
+            if (userId == null)
+            {
+                return RedirectToAction("Login", "User");
+            }
+
             var basket = await _context.Baskets
                 .Include(b => b.BasketOrderDetails)
-                .ThenInclude(od => od.OrderDetailProduct) // Ürün bilgilerini de dahil ediyoruz
+                .ThenInclude(od => od.OrderDetailProduct)
                 .Where(b => b.BasketUserID == userId)
                 .FirstOrDefaultAsync();
 
             if (basket == null)
             {
-                // Eğer kullanıcıya ait sepet yoksa, boş bir sepet döndürülür
                 basket = new Basket
                 {
                     BasketOrderDetails = new List<OrderDetails>()
@@ -40,9 +44,14 @@ namespace onlinePharmacySystem.Web.Controllers
 
         // POST: Basket/AddToBasket/5
         [HttpPost]
-        public async Task<IActionResult> AddToBasket(int productId, int quantity = 1)
+        public async Task<IActionResult> AddToBasket(int productId, int quantity)
         {
-            var userId = 1; // Örnek kullanıcı ID, oturumdan dinamik olarak almanız gerekecek
+            var userId = HttpContext.Session.GetInt32("UserID");
+            if (userId == null)
+            {
+                return RedirectToAction("Login", "User");
+            }
+
             var basket = await _context.Baskets
                 .Include(b => b.BasketOrderDetails)
                 .Where(b => b.BasketUserID == userId)
@@ -52,7 +61,7 @@ namespace onlinePharmacySystem.Web.Controllers
             {
                 basket = new Basket
                 {
-                    BasketUserID = userId,
+                    BasketUserID = userId.Value,
                     BasketDate = DateTime.Now,
                     BasketOrderDetails = new List<OrderDetails>()
                 };
@@ -70,10 +79,10 @@ namespace onlinePharmacySystem.Web.Controllers
                     orderDetail = new OrderDetails
                     {
                         ProductID = productId,
-                        OrderDetailProduct = product, // Ürün bilgisini ekliyoruz
+                        OrderDetailProduct = product,
                         Quantity = quantity,
                         TotalAmount = product.ProductPrice * quantity,
-                        TaxRate = 0.18m // Sabit bir KDV oranı örnek olarak eklenmiştir
+                        TaxRate = 0.18m // Example tax rate
                     };
                     basket.BasketOrderDetails.Add(orderDetail);
                 }
@@ -85,7 +94,7 @@ namespace onlinePharmacySystem.Web.Controllers
             }
 
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index", "Basket");
         }
 
         // POST: Basket/RemoveFromBasket/5
@@ -106,7 +115,12 @@ namespace onlinePharmacySystem.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> ClearBasket()
         {
-            var userId = 1; // Örnek kullanıcı ID, oturumdan dinamik olarak almanız gerekecek
+            var userId = HttpContext.Session.GetInt32("UserID");
+            if (userId == null)
+            {
+                return RedirectToAction("Login", "User");
+            }
+
             var basket = await _context.Baskets
                 .Include(b => b.BasketOrderDetails)
                 .Where(b => b.BasketUserID == userId)
@@ -125,8 +139,7 @@ namespace onlinePharmacySystem.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Checkout()
         {
-            // Ödeme ve sipariş tamamlama işlemlerini burada yapabilirsiniz
-            // Sipariş tamamlandıktan sonra sepeti temizlemeniz gerekebilir
+            // Payment and order completion logic here
             return RedirectToAction("OrderTracking", "Orders");
         }
     }
